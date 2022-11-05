@@ -3,15 +3,19 @@ import { CATEGORIES } from '../data/dummy-data';
 import { CategoryGridTile } from '../components/CategoryGridTile';
 
 export const CategoryScreen = ({ navigation }) => {
-  const handleCategoryItemPress = () => {
-    navigation.navigate('Meal Overview');
+
+  const handleCategoryItemPress = (id) => {
+    navigation.navigate('Meal Overview', {
+      categoryId: id
+    });
   };
+
   const renderCategoryItem = ({ item }) => {
     return (
       <CategoryGridTile
         title={item.title}
         color={item.color}
-        onPress={handleCategoryItemPress}
+        onPress={() => handleCategoryItemPress(item.id)}
       />
     );
   };
