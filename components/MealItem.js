@@ -8,7 +8,7 @@ export const MealItem = ({
 }) => {
   return (
     <View style={styles.mealItem}>
-      <Pressable android_ripple={{color: '#ccc'}} style={({ pressed}) => pressed && styles.buttonPress}>
+      <Pressable android_ripple={{color: '#ccc'}} style={({ pressed}) => pressed && Platform.OS === 'ios' && styles.buttonPress}>
         <View style={styles.innerContainer}>
           <View>
             <Image style={styles.image} source={{ uri: imageUrl }} />
