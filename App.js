@@ -36,7 +36,7 @@ export default function App() {
 
   return (
     <>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
       <View style={styles.container} onLayout={onLayoutRootView}>
         <NavigationContainer>
           <Stack.Navigator
@@ -47,11 +47,12 @@ export default function App() {
             }}
           >
             <Stack.Screen
-              name="Category"
+              name="All Categories"
               component={CategoryScreen}
-              options={{
-                title: 'All Categories',
-              }}
+              // options={({ route, navigation }) => {
+              //   const catId = route.params.categoryId;
+              //   return { title: catId };
+              // }}
             />
             <Stack.Screen name="Meal Overview" component={MealOverviewSceen} />
           </Stack.Navigator>
