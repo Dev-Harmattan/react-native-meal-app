@@ -1,8 +1,8 @@
 import { useEffect, useCallback } from 'react';
 import { StyleSheet, View } from 'react-native';
-import {StatusBar} from 'expo-status-bar'
+import { StatusBar } from 'expo-status-bar';
 import { CategoryScreen } from './screens/CategoryScreen';
-import {MealOverviewSceen} from './screens/MealOverviewScreen';
+import { MealOverviewSceen } from './screens/MealOverviewScreen';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
@@ -36,12 +36,24 @@ export default function App() {
 
   return (
     <>
-      <StatusBar style="dark"/>
+      <StatusBar style="dark" />
       <View style={styles.container} onLayout={onLayoutRootView}>
         <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen name="Category" component={CategoryScreen} />
-            <Stack.Screen name='Meal Overview' component={MealOverviewSceen} />
+          <Stack.Navigator
+            screenOptions={{
+              headerStyle: { backgroundColor: '#351401' },
+              headerTintColor: 'white',
+              contentStyle: { backgroundColor: '#3f2f25' },
+            }}
+          >
+            <Stack.Screen
+              name="Category"
+              component={CategoryScreen}
+              options={{
+                title: 'All Categories',
+              }}
+            />
+            <Stack.Screen name="Meal Overview" component={MealOverviewSceen} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>
