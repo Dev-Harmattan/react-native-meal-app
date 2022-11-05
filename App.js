@@ -2,6 +2,7 @@ import { useEffect, useCallback } from 'react';
 import { StyleSheet, View } from 'react-native';
 import {StatusBar} from 'expo-status-bar'
 import { CategoryScreen } from './screens/CategoryScreen';
+import {MealOverviewSceen} from './screens/MealOverviewScreen';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
@@ -39,7 +40,8 @@ export default function App() {
       <View style={styles.container} onLayout={onLayoutRootView}>
         <NavigationContainer>
           <Stack.Navigator>
-            <Stack.Screen name="category" component={CategoryScreen} />
+            <Stack.Screen name="Category" component={CategoryScreen} />
+            <Stack.Screen name='Meal Overview' component={MealOverviewSceen} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>
