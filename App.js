@@ -1,15 +1,40 @@
+import 'react-native-gesture-handler';
 import { useEffect, useCallback } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { CategoryScreen } from './screens/CategoryScreen';
 import { MealOverviewSceen } from './screens/MealOverviewScreen';
-import {MealDetailScreen} from './screens/MealDetailScreen';
+import { FavoriteScreen } from './screens/FavoriteScreen';
+import { MealDetailScreen } from './screens/MealDetailScreen';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
+const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
+
+const Root = () => {
+  return (
+    <Drawer.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#351401' },
+        headerTintColor: 'white',
+        sceneContainerStyle: { backgroundColor: '#3f2f25' },
+      }}
+    >
+      <Drawer.Screen
+        name="Categories"
+        component={CategoryScreen}
+        options={{
+          title: 'All Categories',
+        }}
+      />
+      <Drawer.Screen name="Favorites" component={FavoriteScreen} />
+    </Drawer.Navigator>
+  );
+};
 
 export default function App() {
   const [fontLoaded] = useFonts({
@@ -48,16 +73,18 @@ export default function App() {
             }}
           >
             <Stack.Screen
-              name="All Categories"
-              component={CategoryScreen}
-              // options={({ route, navigation }) => {
-              //   const catId = route.params.categoryId;
-              //   return { title: catId };
-              // }}
+              name="Root"
+              component={Root}
+              options={{
+                headerShown: false,
+              }}
             />
             <Stack.Screen name="Meal Overview" component={MealOverviewSceen} />
-            <Stack.Screen name="Meal Details" options={({
-            })} component={MealDetailScreen} />
+            <Stack.Screen
+              name="Meal Details"
+              options={{}}
+              component={MealDetailScreen}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </View>
