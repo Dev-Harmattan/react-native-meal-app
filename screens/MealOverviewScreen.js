@@ -23,6 +23,7 @@ export const MealOverviewSceen = ({ route, navigation }) => {
         keyExtractor={(itemData) => itemData.id}
         renderItem={({ item }) => (
           <MealItem
+            id={item.id}
             title={item.title}
             imageUrl={item.imageUrl}
             duration={item.duration}

@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { CategoryScreen } from './screens/CategoryScreen';
 import { MealOverviewSceen } from './screens/MealOverviewScreen';
+import {MealDetailScreen} from './screens/MealDetailScreen';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
@@ -55,6 +56,8 @@ export default function App() {
               // }}
             />
             <Stack.Screen name="Meal Overview" component={MealOverviewSceen} />
+            <Stack.Screen name="Meal Details" options={({
+            })} component={MealDetailScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>

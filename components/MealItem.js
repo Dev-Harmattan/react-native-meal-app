@@ -1,26 +1,31 @@
+import {useNavigation} from '@react-navigation/native'
 import { Text, View, Pressable, Image, StyleSheet, Platform } from 'react-native';
+import {MealDetails} from '../components/MealDetails';
 export const MealItem = ({
+  id,
   title,
   imageUrl,
   duration,
   affordability,
   complexity,
 }) => {
+  const navigation = useNavigation();
+
+  const handleMealItemPress = () => {
+    navigation.navigate('Meal Details', {
+      mealId: id
+    });
+  }
+
   return (
     <View style={styles.mealItem}>
-      <Pressable android_ripple={{color: '#ccc'}} style={({ pressed}) => pressed && Platform.OS === 'ios' && styles.buttonPress}>
+      <Pressable android_ripple={{color: '#ccc'}} style={({ pressed}) => pressed && Platform.OS === 'ios' && styles.buttonPress} onPress={handleMealItemPress}>
         <View style={styles.innerContainer}>
           <View>
             <Image style={styles.image} source={{ uri: imageUrl }} />
             <Text style={styles.title}>{title}</Text>
           </View>
-          <View style={styles.details}>
-            <Text style={styles.detailsItem}>{duration}m</Text>
-            <Text style={styles.detailsItem}>
-              {affordability.toUpperCase()}
-            </Text>
-            <Text style={styles.detailsItem}>{complexity.toUpperCase()}</Text>
-          </View>
+          <MealDetails duration={duration} affordability={affordability} complexity={complexity} />
         </View>
       </Pressable>
     </View>
