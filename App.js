@@ -11,6 +11,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { Ionicons } from '@expo/vector-icons';
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -22,6 +23,10 @@ const Root = () => {
         headerStyle: { backgroundColor: '#351401' },
         headerTintColor: 'white',
         sceneContainerStyle: { backgroundColor: '#3f2f25' },
+        drawerContentStyle: { backgroundColor: '#351401' },
+        drawerInactiveTintColor: 'white',
+        drawerActiveTintColor: '#351401',
+        drawerActiveBackgroundColor: '#be9074',
       }}
     >
       <Drawer.Screen
@@ -29,9 +34,21 @@ const Root = () => {
         component={CategoryScreen}
         options={{
           title: 'All Categories',
+          drawerIcon: ({ size, color }) => (
+            <Ionicons color={color} size={size} name="list" />
+          ),
         }}
       />
-      <Drawer.Screen name="Favorites" component={FavoriteScreen} />
+      <Drawer.Screen
+        name="Favorites"
+        component={FavoriteScreen}
+        options={{
+          title: 'All Categories',
+          drawerIcon: ({ size, color }) => (
+            <Ionicons color={color} size={size} name="star" />
+          ),
+        }}
+      />
     </Drawer.Navigator>
   );
 };
