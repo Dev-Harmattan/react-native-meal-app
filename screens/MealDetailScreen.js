@@ -4,14 +4,20 @@ import { MealDetails } from '../components/MealDetails';
 import { MEALS } from '../data/dummy-data';
 import { Subtitle } from '../components/mealDetail/Subtitle';
 import { List } from '../components/mealDetail/List';
+import { IconButton } from '../components/IconButton';
 
 export const MealDetailScreen = ({ route, navigation }) => {
   const mealId = route.params.mealId;
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 
+  const handleHeaderButtonPress = () => {
+    console.log('PRESS HEADER');
+  };
+
   useLayoutEffect(() => {
     navigation.setOptions({
       title: selectedMeal.title,
+      headerRight: () => <IconButton onPress={handleHeaderButtonPress} />,
     });
   }, [selectedMeal, navigation]);
 
